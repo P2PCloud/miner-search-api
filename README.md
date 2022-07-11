@@ -33,7 +33,7 @@ $$ minerRep =  { bussinessActivity \over max(10, \sum report.pps *  report.user.
 
 GET `/findOffer`
 
-Fetches all the offers from the blockchain. Filters them by parameters.
+Fetches all the offers from the blockchain. Filters them by parameters. Default sorting by price.
 
 Params:
 - `region` - region from vm type
