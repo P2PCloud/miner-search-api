@@ -1,0 +1,7 @@
+grpc:
+  url: "localhost:8070"
+http:
+  url: "localhost:8080"
+log:
+  level: debug
+  environment: dev

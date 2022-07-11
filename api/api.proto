@@ -1,0 +1,39 @@
+syntax = "proto3";
+package search_api;
+
+option go_package = 'github.com/P2PCloud/miner-search-api';
+
+import "google/api/annotations.proto";
+//import "google/protobuf/empty.proto";
+
+service SearchService {
+  rpc FindOffer (FindOfferRequest) returns (FindOfferResponse) {
+    option (google.api.http) = {
+      get: "/api/search/findOffer"
+    };
+  }
+}
+
+message FindOfferRequest {
+  string region = 1;
+  int32 cpuSingle = 2;
+  int32 cpuMulti = 3;
+  int32 ram = 4;
+  int32 diskSpeed = 5;
+  int32 diskSize = 6;
+  int32 netSpeed = 7;
+}
+
+message FindOfferResponse {
+  repeated Offer offers = 1;
+}
+
+message Offer {
+  string region = 1;
+  int32 cpuSingle = 2;
+  int32 cpuMulti = 3;
+  int32 ram = 4;
+  int32 diskSpeed = 5;
+  int32 diskSize = 6;
+  int32 netSpeed = 7;
+}
