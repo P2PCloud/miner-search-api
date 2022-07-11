@@ -1,0 +1,31 @@
+syntax = "proto3";
+import "protoc-gen-swagger/options/annotations.proto";
+package cart;
+
+option go_package = 'github.com/P2PCloud/miner-search-api';
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+  info: {
+    title: "Miner Search Api"
+    version: "1.0"
+    contact: {
+      name: "Pavel Mozhchil"
+      url: "https://github.com/LiFeAiR"
+      email: "lifeair@gmail.com"
+    };
+  };
+  schemes: [HTTP, HTTPS]
+  consumes: "application/json"
+  produces: "application/json"
+  responses: {
+    key: "404"
+    value: {
+      description: "Returned when the resource does not exist."
+      schema: {
+        json_schema: {
+          type: STRING
+        };
+      };
+    };
+  };
+};
