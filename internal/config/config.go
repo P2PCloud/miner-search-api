@@ -24,6 +24,9 @@ type config struct {
 	HTTP struct {
 		URL string
 	}
+	DB struct {
+		Data string
+	}
 }
 
 func InitConfig(configFilepath string) {

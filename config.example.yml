@@ -5,3 +5,25 @@ http:
 log:
   level: debug
   environment: dev
+db:
+  data: '
+[
+    {
+        "region": "europe-west",
+        "cpuSingle": 1000,
+        "cpuMulti": 1,
+        "ram": 4096,
+        "diskSpeed": 0,
+        "diskSize": 40000,
+        "netSpeed": 50
+    },
+    {
+        "region": "northamerica-east",
+        "cpuSingle": 1000,
+        "cpuMulti": 1,
+        "ram": 4096,
+        "diskSpeed": 0,
+        "diskSize": 40000,
+        "netSpeed": 50
+    }
+]'
