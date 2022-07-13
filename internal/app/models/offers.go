@@ -14,7 +14,7 @@ type VmTypeCollection []*VmType
 type VmTypeMap map[string]*VmType
 
 type Offer struct {
-	Id        int    `json:"id"`
+	Id        int32  `json:"id"`
 	VmTypeId  string `json:"vm_type_id"`
 	Miner     string `json:"miner"`
 	Available int32  `json:"available"`

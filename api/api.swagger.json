@@ -160,6 +160,10 @@
         },
         "vmType": {
           "$ref": "#/definitions/search_apiVmType"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },

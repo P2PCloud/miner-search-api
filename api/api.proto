@@ -42,4 +42,5 @@ message Offer {
   int32 pps = 1;
   string miner = 2;
   VmType vmType = 3;
+  int32 id = 4;
 }
