@@ -2,10 +2,10 @@ package repository
 
 import (
 	"context"
-	"github.com/P2PCloud/miner-search-api/internal/config"
 	"sort"
 
 	"github.com/P2PCloud/miner-search-api/internal/app/models"
+	"github.com/P2PCloud/miner-search-api/internal/config"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/pkg/errors"
 )
