@@ -11,11 +11,12 @@ db:
     {
         "region": "europe-west",
         "cpuSingle": 1000,
-        "cpuMulti": 1,
+        "cpuMulti": 2,
         "ram": 4096,
         "diskSpeed": 0,
         "diskSize": 40000,
-        "netSpeed": 50
+        "netSpeed": 50,
+        "minerRating": 1
     },
     {
         "region": "northamerica-east",
@@ -24,6 +25,7 @@ db:
         "ram": 4096,
         "diskSpeed": 0,
         "diskSize": 40000,
-        "netSpeed": 50
+        "netSpeed": 50,
+        "minerRating": 2
     }
 ]'
