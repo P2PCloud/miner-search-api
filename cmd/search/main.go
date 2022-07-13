@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	gw "github.com/P2PCloud/miner-search-api/api/github.com/P2PCloud/miner-search-api"
+	"github.com/P2PCloud/miner-search-api/internal/app/repository"
 	"github.com/P2PCloud/miner-search-api/internal/app/search"
 	"github.com/P2PCloud/miner-search-api/internal/config"
 	"github.com/P2PCloud/miner-search-api/pkg/middleware"
@@ -80,8 +81,13 @@ func run() error {
 		),
 	)
 
+	r, err := repository.NewRepository(config.Cfg.DB.Data)
+	if err != nil {
+		logrusEntry.WithError(err).Fatal("cannot init repository")
+	}
+
 	// Attach the Cart service to the server
-	app, err := search.NewApp(Version)
+	app, err := search.NewApp(Version, r)
 	if err != nil {
 		logrusEntry.WithError(err).Fatal("cannot init app")
 	}
