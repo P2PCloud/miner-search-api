@@ -6,6 +6,9 @@ log:
   level: debug
   environment: dev
 db:
+  Defaults:
+    UserReputation: 10
+    MinerReputation: 10
   data: '{
   "vmTypes": {
       "1": {

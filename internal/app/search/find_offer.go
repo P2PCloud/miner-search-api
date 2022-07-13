@@ -39,6 +39,7 @@ func (a appImpl) FindOffer(ctx context.Context, request *gw.FindOfferRequest) (*
 			},
 			Miner: offer.Miner,
 			Pps:   offer.Pps,
+			Id:    offer.Id,
 		}
 	}
 	return &gw.FindOfferResponse{

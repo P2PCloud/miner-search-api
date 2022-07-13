@@ -24,9 +24,17 @@ type config struct {
 	HTTP struct {
 		URL string
 	}
-	DB struct {
-		Data string
-	}
+	DB Db
+}
+
+type Defaults struct {
+	UserReputation  int32
+	MinerReputation int32
+}
+
+type Db struct {
+	Defaults Defaults
+	Data     string
 }
 
 func InitConfig(configFilepath string) {

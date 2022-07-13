@@ -55,7 +55,7 @@ func Test_repoImpl_GetOffersByParams(t *testing.T) {
 				return
 			}
 			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("GetOffersByParams() got = %#v, want %#v", got[0], tt.want)
+				t.Errorf("GetOffersByParams() got = %v, want %v", got[0], tt.want)
 			}
 		})
 	}

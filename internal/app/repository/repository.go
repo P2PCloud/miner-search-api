@@ -5,6 +5,7 @@ import (
 	"sort"
 
 	"github.com/P2PCloud/miner-search-api/internal/app/models"
+	"github.com/P2PCloud/miner-search-api/internal/config"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/pkg/errors"
 )
@@ -17,8 +18,9 @@ type Repository interface {
 }
 
 type repoImpl struct {
-	dataRaw string
-	data    db
+	dataRaw  string
+	data     db
+	Defaults config.Defaults
 }
 
 type db struct {
@@ -33,9 +35,10 @@ type db struct {
 	MinerReputation   map[string]float32
 }
 
-func NewRepository(data string) (Repository, error) {
+func NewRepository(d config.Db) (Repository, error) {
 	r := &repoImpl{
-		dataRaw: data,
+		dataRaw:  d.Data,
+		Defaults: d.Defaults,
 		data: db{
 			VmTypes:           models.VmTypeMap{},
 			VmOffers:          make(models.OfferCollection, 0),
@@ -49,7 +52,7 @@ func NewRepository(data string) (Repository, error) {
 		},
 	}
 
-	err := r.parseData([]byte(data))
+	err := r.parseData([]byte(d.Data))
 	if err != nil {
 		return nil, err
 	}
@@ -101,15 +104,11 @@ func (r *repoImpl) calcUserReputation() {
 	for _, offer := range r.data.VmOffers {
 		if _, ok := r.data.UserReputation[offer.Miner]; !ok {
 			urs := r.data.UserReportsPpsSum[offer.Miner]
-			if urs < 10 {
-				urs = 10
+			if urs < r.Defaults.UserReputation {
+				urs = r.Defaults.UserReputation
 			}
 
-			ba, ok := r.data.BusinessActivity[offer.Miner]
-			if !ok {
-				ba = 1
-			}
-
+			ba := r.data.BusinessActivity[offer.Miner]
 			rr := float32(ba) / float32(urs)
 			sorted = append(sorted, ur{user: offer.Miner, reputation: rr})
 			r.data.UserReputation[offer.Miner] = rr
@@ -157,8 +156,8 @@ func (r *repoImpl) calcMinerReputation() {
 
 		urs := r.data.UserReportsPpsSum[k]
 		d := urs * v
-		if d < 10 {
-			d = 10
+		if d < r.Defaults.MinerReputation {
+			d = r.Defaults.MinerReputation
 		}
 
 		r.data.MinerReputation[k] = float32(ba) / float32(d)

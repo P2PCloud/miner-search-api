@@ -59,6 +59,7 @@ func Test_appImpl_FindOffer(t *testing.T) {
 		}, false},
 		{"sucess one offer", fields{r: r1}, args{request: &gw.FindOfferRequest{}}, &gw.FindOfferResponse{
 			Offers: []*gw.Offer{{
+				Id:    1,
 				Pps:   5,
 				Miner: "3",
 				VmType: &gw.VmType{
@@ -84,7 +85,7 @@ func Test_appImpl_FindOffer(t *testing.T) {
 				return
 			}
 			if !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("FindOffer() got = %#v, want %v", got.Offers[0].VmType, tt.want)
+				t.Errorf("FindOffer() got = %v, want %v", got.Offers, tt.want)
 			}
 		})
 	}
