@@ -81,7 +81,7 @@ func run() error {
 		),
 	)
 
-	r, err := repository.NewRepository(config.Cfg.DB.Data)
+	r, err := repository.NewRepository(config.Cfg.DB)
 	if err != nil {
 		logrusEntry.WithError(err).Fatal("cannot init repository")
 	}
