@@ -6,26 +6,67 @@ log:
   level: debug
   environment: dev
 db:
-  data: '
-[
+  data: '{
+  "vmTypes": {
+      "1": {
+          "region": "europe-west",
+          "cpuSingle": 1000,
+          "cpuMulti": 2,
+          "ram": 4096,
+          "diskSpeed": 0,
+          "diskSize": 40000,
+          "netSpeed": 50
+      },
+      "2": {
+          "region": "northamerica-east",
+          "cpuSingle": 1000,
+          "cpuMulti": 1,
+          "ram": 4096,
+          "diskSpeed": 0,
+          "diskSize": 40000,
+          "netSpeed": 50
+      }
+  },
+  "vmOffers": [
+      {
+        "id": 1,
+        "vm_type_id": "1",
+        "miner": "000-001",
+        "available": 1,
+        "pps": 1
+      },
+      {
+        "id": 2,
+        "vm_type_id": "2",
+        "miner": "000-001",
+        "available": 1,
+        "pps": 2
+      },
+      {
+        "id": 3,
+        "vm_type_id": "1",
+        "miner": "000-002",
+        "available": 1,
+        "pps": 3
+      }
+  ],
+  "minerPayouts": [
     {
-        "region": "europe-west",
-        "cpuSingle": 1000,
-        "cpuMulti": 2,
-        "ram": 4096,
-        "diskSpeed": 0,
-        "diskSize": 40000,
-        "netSpeed": 50,
-        "minerRating": 1
+      "amount": 10,
+      "user": "000-002",
+      "miner": "000-001"
     },
     {
-        "region": "northamerica-east",
-        "cpuSingle": 1000,
-        "cpuMulti": 1,
-        "ram": 4096,
-        "diskSpeed": 0,
-        "diskSize": 40000,
-        "netSpeed": 50,
-        "minerRating": 2
+      "amount": 20,
+      "user": "000-002",
+      "miner": "000-001"
     }
-]'
+  ],
+  "userReports": [
+    {
+      "pps": 100,
+      "user": "000-001",
+      "miner": "000-002"
+    }
+  ]
+}'

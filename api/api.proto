@@ -28,7 +28,7 @@ message FindOfferResponse {
   repeated Offer offers = 1;
 }
 
-message Offer {
+message VmType {
   string region = 1;
   int32 cpuSingle = 2;
   int32 cpuMulti = 3;
@@ -36,4 +36,10 @@ message Offer {
   int32 diskSpeed = 5;
   int32 diskSize = 6;
   int32 netSpeed = 7;
+}
+
+message Offer {
+  int32 pps = 1;
+  string miner = 2;
+  VmType vmType = 3;
 }

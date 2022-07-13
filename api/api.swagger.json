@@ -151,6 +151,21 @@
     "search_apiOffer": {
       "type": "object",
       "properties": {
+        "pps": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "miner": {
+          "type": "string"
+        },
+        "vmType": {
+          "$ref": "#/definitions/search_apiVmType"
+        }
+      }
+    },
+    "search_apiVmType": {
+      "type": "object",
+      "properties": {
         "region": {
           "type": "string"
         },
