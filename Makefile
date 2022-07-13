@@ -30,7 +30,7 @@ go-build: .build-main
 
 go-generate:
 	@echo "  >  Generating dependency files..."
-	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go generate $(generate)
+	@GOPATH=$(GOPATH) GOBIN=$(GOBIN) go generate ./...
 
 go-mod-download:
 	@echo "  >  Checking if there is any missing dependencies..."

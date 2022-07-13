@@ -9,7 +9,7 @@ The rating API is a read-only blockchain information aggregator. API reads all t
 ### Business activity
 Business activity is counted as summ of all the payments miner got for his virtual machines. Counted in stablecoin. Calculated from `minerPayout` events. Both user and miner get their business activity score.
 
-$$ bussinessActivity = { \sum_{payout=1}^n minerPayout.amount } $$
+$$ bussinessActivity = { \sum_{report=1}^n minerPayout.amount } $$
 
 
 ### User's reputation
