@@ -13,7 +13,7 @@ $$ bussinessActivity = { \sum_{payout=1}^n minerPayout.amount } $$
 
 
 ### User's reputation
-User reputation score equals to the sum of all the business activity scores divided by sum of pps of all the reports he did. Conted by `bookingReported` events. 
+User reputation score equals to the sum of all the business activity scores divided by sum of pps of all the reports he did. 
 
 $$ userRep = { bussinessActivity \over max(10, \sum report.pps ) } $$
 
@@ -45,3 +45,27 @@ Params:
 - `diskSize` - minimum disk size
 - `netSpeed` - minimum guaranteed network in/out speed
 - `reputation` - minimum miner's reputation score
+
+
+### Data structure
+
+## VM Offers on blockchain
+- `id` - offer id. Reference to vmtypes.json
+- `vm_type_id` - vm type
+- `miner` - miner address
+- `available` - amount of machines available
+- `pps` - price per second per machine
+
+## VM types on GitHub
+Check out `vmtypes.json`
+
+## Events on blockchain
+`minerPayout` - miner got paid for his virtual machines
+- `amount` - final amount of stablecoin paid
+- `user` - user address
+- `miner` - miner address
+
+`report` - user reported miner for misconduct
+- `pps` - price of reported machine
+- `user` - user address
+- `miner` - miner address
